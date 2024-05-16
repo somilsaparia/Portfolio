@@ -1,0 +1,169 @@
+html, body {
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='70' height='70' patternTransform='scale(2) rotate(85)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(205,100%,17.5%,1)'/><path d='M-4.8 4.44L4 16.59 16.14 7.8M32 30.54l-13.23 7.07 7.06 13.23M-9 38.04l-3.81 14.5 14.5 3.81M65.22 4.44L74 16.59 86.15 7.8M61 38.04l-3.81 14.5 14.5 3.81'  stroke-linecap='square' stroke-width='1' stroke='hsla(197,100%,45.5%,1)' fill='none'/><path d='M59.71 62.88v3h3M4.84 25.54L2.87 27.8l2.26 1.97m7.65 16.4l-2.21-2.03-2.03 2.21m29.26 7.13l.56 2.95 2.95-.55'  stroke-linecap='square' stroke-width='1' stroke='hsla(195,100%,6.1%,1)' fill='none'/><path d='M58.98 27.57l-2.35-10.74-10.75 2.36M31.98-4.87l2.74 10.65 10.65-2.73M31.98 65.13l2.74 10.66 10.65-2.74'  stroke-linecap='square' stroke-width='1' stroke='hsla(195,100%,32.7%,1)' fill='none'/><path d='M8.42 62.57l6.4 2.82 2.82-6.41m33.13-15.24l-4.86-5.03-5.03 4.86m-14-19.64l4.84-5.06-5.06-4.84'  stroke-linecap='square' stroke-width='1' stroke='hsla(0,0%,100%,1)' fill='none'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>")
+}
+
+.card-face {
+    padding: 2.5em;
+}
+
+.content-div {
+    display: none;
+}
+
+.flip-card {
+    height: 65vh;
+    width: 55vw;
+    perspective: 1000px;
+    transition: 0.3s;
+    margin: auto;
+  }
+  
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    border: 2px solid #FFFFFF !important;
+    border-radius: 25px;
+    background-color: #003459 !important;
+    color: #FFFFFF !important;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+  
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+.my-name {
+    color: #FFFFFF;
+    width: max-content;
+}
+
+.my-name:hover {
+    color: #007DA7;
+}
+
+.project-title {
+    color: #FFFFFF;
+    padding-bottom: 0.75em;
+    font-weight: normal;
+}
+
+.professional-title {
+    padding-top: 1em;
+}
+
+.project-link {
+    text-decoration: none;
+    color: #00A6E8;
+    padding-bottom: 0.5em;
+    display: block;
+    width: max-content;
+}
+
+.link {
+    color: white;
+}
+
+.card-content {
+    margin-top: 5em;
+}
+
+.card-content-left {
+    padding-right: 1.5em;
+}
+
+.card-content-right {
+    padding-left: 1.5em;
+}
+
+.github-link {
+    text-decoration: none;
+    color: #00A6E8;
+    display: block;
+    width: max-content;
+}
+
+.width-content {
+    width: max-content;
+}
+
+.project-link:hover {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.through-item {
+    user-select: none;
+}
+
+.icon {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.icon:hover {
+    transform: scale(1.2);
+    color: #007DA7 !important;
+}
+
+p {
+    transition-duration: 2s;
+    color: #FFFFFF;
+}
+
+p:hover {
+    transition-duration: 2s;
+    color: #FFFFFF;
+}
+
+@keyframes colorChange {
+    0%, 100% { color: #00A6E8; }
+    50% { color: #FFFFFF; }
+}
+
+.animated-text {
+    padding-bottom: 1em;
+}
+
+.animated-text span {
+    animation: colorChange 2s linear infinite;
+    display: inline-block;
+}
+
+.heading-greetings {
+    font-size: 5em;
+    padding-bottom: 0.25em;
+}
+
+.project-name:hover {
+    color: #007DA7 !important;
+}
