@@ -125,6 +125,10 @@ body {
         transform: rotateY(180deg);
         display: none;
     }
+
+    .card-content-right {
+        padding-left: 0em;
+    }
 }
 
 @media screen and (max-width: 435px) {
