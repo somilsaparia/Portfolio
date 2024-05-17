@@ -106,6 +106,7 @@ body {
     }
 
     .flip-card-front, .flip-card-back {
+        min-height: 100vh;
         height: max-content;
         width: auto;
     }
