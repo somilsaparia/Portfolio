@@ -97,8 +97,6 @@ body {
 
     .card-content {
         flex-direction: column;
-        padding-left: 4em;
-        padding-right: 4em;
     }
     
     .card-content-left {
