@@ -97,9 +97,11 @@ body {
 
     .card-content {
         flex-direction: column;
+        padding: 0em;
     }
     
     .card-content-left {
+        padding: 0em;
         margin-top: 3em;
     }
 
