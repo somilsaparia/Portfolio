@@ -10,61 +10,75 @@ for (let i = 0; i < text.length; i++) {
 textContainer.innerHTML = newHTML;
 
 document.addEventListener('DOMContentLoaded', function() {
-const cardInner = document.querySelector('.flip-card-inner');
-const frontContent = document.querySelector('.front-content').innerHTML;
-const frontCard = document.querySelector('.flip-card-front');
-const backCard = document.querySelector('.flip-card-back');
-let isFrontVisible = true;
+    const cardInner = document.querySelector('.flip-card-inner');
+    const frontContent = document.querySelector('.front-content').innerHTML;
+    const frontCard = document.querySelector('.flip-card-front');
+    const backCard = document.querySelector('.flip-card-back');
+    let isFrontVisible = true;
 
-frontCard.innerHTML = frontContent;
+    frontCard.innerHTML = frontContent;
 
-function flipCard() {
-    cardInner.classList.toggle('flipped');
-    isFrontVisible = !isFrontVisible;
-}
+    function flipCard() {
+        cardInner.classList.toggle('flipped');
+        isFrontVisible = !isFrontVisible;
 
-function updateCardContent(htmlContent, prepareForFront) {
-    const contentArea = prepareForFront ? frontCard : backCard;
-    contentArea.innerHTML = htmlContent;
-    attachLinkListeners(contentArea); // Reattach listeners after updating content
-}
+        // Ensure both sides are displayed during the flip
+        frontCard.style.display = "block";
+        backCard.style.display = "block";
 
-function handleProjectLinkChange(event) {
-    event.preventDefault();
-    const projectId = event.target.getAttribute('data-project');
-    const contentToShow = document.getElementById(projectId + '-content');
-
-    if (!contentToShow) {
-        console.error('Content for ' + projectId + ' not found');
-        return;
+        // Set display:none to the hidden face after the transition ends
+        cardInner.addEventListener('transitionend', handleTransitionEnd, { once: true });
     }
 
-    updateCardContent(contentToShow.innerHTML, !isFrontVisible);
-    flipCard();
-}
-
-function handleNameClick(event) {
-    event.preventDefault();
-    const contentToShow = document.querySelector('.front-content');
-
-    if (!contentToShow) {
-        console.error('Front content not found');
-        return;
+    function handleTransitionEnd() {
+        if (isFrontVisible) {
+            backCard.style.display = "none";
+        } else {
+            frontCard.style.display = "none";
+        }
     }
 
-    updateCardContent(contentToShow.innerHTML, !isFrontVisible);
-    flipCard();
-}
+    async function updateCardContent(htmlContent, prepareForFront) {
+        const contentArea = prepareForFront ? frontCard : backCard;
+        contentArea.innerHTML = htmlContent;
+        attachLinkListeners(contentArea);
+    }
 
-function attachLinkListeners(context) {
-    context.querySelectorAll('.project-link').forEach(link => {
-        link.addEventListener('click', handleProjectLinkChange);
-    });
-    context.querySelectorAll('.my-name').forEach(nameBarElement => {
-        nameBarElement.addEventListener('click', handleNameClick);
-    });
+    function handleProjectLinkChange(event) {
+        event.preventDefault();
+        const projectId = event.target.getAttribute('data-project');
+        const contentToShow = document.getElementById(projectId + '-content');
 
-}
+        if (!contentToShow) {
+            console.error('Content for ' + projectId + ' not found');
+            return;
+        }
 
-attachLinkListeners(document);
+        updateCardContent(contentToShow.innerHTML, !isFrontVisible);
+        flipCard();
+    }
+
+    function handleNameClick(event) {
+        event.preventDefault();
+        const contentToShow = document.querySelector('.front-content');
+
+        if (!contentToShow) {
+            console.error('Front content not found');
+            return;
+        }
+
+        updateCardContent(contentToShow.innerHTML, !isFrontVisible);
+        flipCard();
+    }
+
+    function attachLinkListeners(context) {
+        context.querySelectorAll('.project-link').forEach(link => {
+            link.addEventListener('click', handleProjectLinkChange);
+        });
+        context.querySelectorAll('.my-name').forEach(nameBarElement => {
+            nameBarElement.addEventListener('click', handleNameClick);
+        });
+    }
+
+    attachLinkListeners(document);
 });
