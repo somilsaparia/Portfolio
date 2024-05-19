@@ -46,18 +46,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handleProjectLinkChange(event) {
         event.preventDefault();
-        const projectId = event.target.getAttribute('data-project');
+        const target = event.target.closest('.project-link'); // Ensure we get the parent <a> element
+        if (!target) return;
+    
+        const projectId = target.getAttribute('data-project');
         const contentToShow = document.getElementById(projectId + '-content');
-
+    
         if (!contentToShow) {
             console.error('Content for ' + projectId + ' not found');
             return;
         }
-
+    
         updateCardContent(contentToShow.innerHTML, !isFrontVisible);
         flipCard();
+        setLineHeight();
     }
-
+    
     function handleNameClick(event) {
         event.preventDefault();
         const contentToShow = document.querySelector('.front-content');
@@ -79,6 +83,25 @@ document.addEventListener('DOMContentLoaded', function() {
             nameBarElement.addEventListener('click', handleNameClick);
         });
     }
+
+    function setLineHeight() {
+        var component1 = document.querySelector(".school1");
+        var component2 = document.querySelector(".school2");
+        var bulletPointElement = document.querySelector(".bullet-point1");
+        var margin = (component1.offsetHeight / 2) - 45;
+        bulletPointElement.style.marginTop = margin + "px";
+
+        var lineElement = document.querySelector(".line1");
+        lineElement.style.height = ((component1.offsetHeight / 2) + (component2.offsetHeight / 2)) + "px";
+        
+        component2 = document.querySelector(".school2");
+        var component3 = document.querySelector(".school3");
+        lineElement = document.querySelector(".line2");
+        lineElement.style.height = ((component2.offsetHeight / 2) + (component3.offsetHeight / 2)) + "px";
+    }
+
+    window.onload = setLineHeight;
+    window.onresize = setLineHeight;
 
     attachLinkListeners(document);
 });

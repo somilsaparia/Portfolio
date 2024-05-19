@@ -9,16 +9,36 @@ body {
     background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='70' height='70' patternTransform='scale(2) rotate(85)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(205,100%,17.5%,1)'/><path d='M-4.8 4.44L4 16.59 16.14 7.8M32 30.54l-13.23 7.07 7.06 13.23M-9 38.04l-3.81 14.5 14.5 3.81M65.22 4.44L74 16.59 86.15 7.8M61 38.04l-3.81 14.5 14.5 3.81'  stroke-linecap='square' stroke-width='1' stroke='hsla(197,100%,45.5%,1)' fill='none'/><path d='M59.71 62.88v3h3M4.84 25.54L2.87 27.8l2.26 1.97m7.65 16.4l-2.21-2.03-2.03 2.21m29.26 7.13l.56 2.95 2.95-.55'  stroke-linecap='square' stroke-width='1' stroke='hsla(195,100%,6.1%,1)' fill='none'/><path d='M58.98 27.57l-2.35-10.74-10.75 2.36M31.98-4.87l2.74 10.65 10.65-2.73M31.98 65.13l2.74 10.66 10.65-2.74'  stroke-linecap='square' stroke-width='1' stroke='hsla(195,100%,32.7%,1)' fill='none'/><path d='M8.42 62.57l6.4 2.82 2.82-6.41m33.13-15.24l-4.86-5.03-5.03 4.86m-14-19.64l4.84-5.06-5.06-4.84'  stroke-linecap='square' stroke-width='1' stroke='hsla(0,0%,100%,1)' fill='none'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>")
 }
 
-.card-face {
-    padding: 2.5em;
-}
-
 .content-div {
     display: none;
 }
 
 .flip-card {
     perspective: 1000px;
+}
+
+/* Base styles for the bullet list */
+.bullet-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.bullet {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.line {
+    width: 3px;
+    background-color: white;
+    margin-left: 11px;
+}
+
+.edu-bold {
+    white-space: pre-line;
 }
 
 @media screen and (min-width: 1000px) {
@@ -53,6 +73,7 @@ body {
     .heading-greetings {
         font-size: 5em;
     }
+
     .card-content-left {
         padding-right: 1.5em;
     }
@@ -97,7 +118,8 @@ body {
 
     .card-content {
         flex-direction: column;
-        padding: 0em;
+        padding-left: 2.5em;
+        padding-right: 2.5em;
     }
     
     .card-content-left {
@@ -108,7 +130,7 @@ body {
     .flip-card-front, .flip-card-back {
         min-height: 100vh;
         height: max-content;
-        width: auto;
+        width: 100vw;
     }
 
     .flip-card-inner {
@@ -128,6 +150,22 @@ body {
 
     .card-content-right {
         padding: 0em;
+    }
+
+    .card-face {
+        padding: 1em;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .concentration-block {
+        display: block;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+
+    .vertical-bar {
+        display: none;
     }
 }
 
@@ -164,6 +202,7 @@ body {
 .my-name {
     color: #FFFFFF;
     width: max-content;
+    display: inline-block;
 }
 
 .my-name:hover {
@@ -253,6 +292,15 @@ p:hover {
     padding-bottom: 0.25em;
 }
 
-.project-name:hover {
+.project-icon {
+    color: white;
+    display: inline-block;
+}
+
+.project-icon:hover {
     color: #007DA7 !important;
+}
+
+.font-normal {
+    font-weight: normal;
 }
