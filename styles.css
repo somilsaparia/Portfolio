@@ -124,6 +124,7 @@ body {
         flex-direction: column;
         padding-left: 2.5em;
         padding-right: 2.5em;
+        padding-bottom: 2.5em;
     }
     
     .card-content-left {
